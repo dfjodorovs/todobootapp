@@ -29,20 +29,12 @@ public class UserController {
         return "singup";
     }
 
-    @GetMapping("/asdf")
-    private String getewUserPage(Model model){
-        TodoAppUser o = new TodoAppUser();
-        o.setUsername("asdfsadf");
-        model.addAttribute("newUser", o);
-        return "singup";
-    }
-
     @PostMapping("/")
     private String createNewUser(TodoAppUser user, Model model){
         todoUserRepository.save(user);
         model.addAttribute("saveOk","Saved!");
         model.addAttribute("newUser",new TodoAppUser());
-        return "singup";
+        return "signup";
     }
 
 //    @GetMapping("/test")

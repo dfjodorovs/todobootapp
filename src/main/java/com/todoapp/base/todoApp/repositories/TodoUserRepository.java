@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TodoUserRepository extends JpaRepository<TodoAppUser, Long> {
+
+    TodoAppUser findByUsername(String username);
 }

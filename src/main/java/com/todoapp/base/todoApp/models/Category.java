@@ -17,7 +17,7 @@ public class Category {
     @JoinColumn(name = "todo_app_user_id")
     private TodoAppUser todoAppUser;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<CategoryList> categoryLists = new ArrayList<>();
 
     public TodoAppUser getTodoAppUser() {

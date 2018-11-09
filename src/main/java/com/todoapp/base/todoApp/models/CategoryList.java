@@ -13,7 +13,7 @@ public class CategoryList {
     private long id;
     private String name;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<TodoItem> todoItems= new ArrayList<>();
 
 

@@ -1,6 +1,5 @@
 package com.todoapp.base.todoApp.controllers;
 
-import com.sun.tools.corba.se.idl.StringGen;
 import com.todoapp.base.todoApp.models.Category;
 import com.todoapp.base.todoApp.models.TodoAppUser;
 import com.todoapp.base.todoApp.repositories.TodoUserRepository;
@@ -31,8 +30,7 @@ public class CategoryController {
         TodoAppUser username = todoUserRepository.findByUsername(auth.getName());
 
         username.getCategories().add(newCategory);
-
         todoUserRepository.save(username);
-        return "category";
+        return "redirect:/category";
     }
 }

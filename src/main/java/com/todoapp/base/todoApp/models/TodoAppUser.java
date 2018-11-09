@@ -16,7 +16,7 @@ public class TodoAppUser {
     private String password;
     private String email;
 
-    @OneToMany(mappedBy = "todoAppUser")
+    @OneToMany(mappedBy = "todoAppUser", cascade = CascadeType.ALL)
     List<Category> categories = new ArrayList<>();
 
     public long getId() {

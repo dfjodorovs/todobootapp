@@ -26,7 +26,7 @@ public class UserController {
     @GetMapping("/")
     private String getNewUserPage(Model model){
         model.addAttribute("newUser",new TodoAppUser());
-        return "singup";
+        return "signup";
     }
 
     @PostMapping("/")

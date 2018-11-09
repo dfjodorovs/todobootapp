@@ -19,6 +19,9 @@ public class CustomWebSecurityConfig extends WebSecurityConfigurerAdapter {
         auth.inMemoryAuthentication()
                 .withUser("a")
                 .password(passwordEncoder().encode("a"))
+                .roles("ADMIN").and()
+                .withUser("s")
+                .password(passwordEncoder().encode("s"))
                 .roles("ADMIN");
 
     }

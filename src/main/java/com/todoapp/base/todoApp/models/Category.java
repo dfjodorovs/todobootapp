@@ -13,20 +13,8 @@ public class Category {
     private long id;
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "todo_app_user_id")
-    private TodoAppUser todoAppUser;
-
     @OneToMany(cascade = CascadeType.ALL)
     private List<CategoryList> categoryLists = new ArrayList<>();
-
-    public TodoAppUser getTodoAppUser() {
-        return todoAppUser;
-    }
-
-    public void setTodoAppUser(TodoAppUser todoAppUser) {
-        this.todoAppUser = todoAppUser;
-    }
 
     public long getId() {
         return id;

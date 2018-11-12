@@ -20,13 +20,12 @@ public class ListService {
 
     public void saveNewList(String categoryName, CategoryList newList){
         TodoAppUser username = utilService.getUser();
-        Category chosenCategory = getCategoryByCategoryName(categoryName);
+        Category chosenCategory = getCategoryByCategoryName(username, categoryName);
         chosenCategory.getCategoryLists().add(newList);
         todoUserRepository.save(username);
     }
 
-    private Category getCategoryByCategoryName(String categoryName){
-        TodoAppUser username = utilService.getUser();
+    private Category getCategoryByCategoryName(TodoAppUser username, String categoryName){
         Category chosenCategory = null;
         for(Category c : username.getCategories()){
             if(c.getName().equals(categoryName)){
@@ -37,6 +36,8 @@ public class ListService {
     }
 
     public List<CategoryList> getLists(String categoryName) {
-
+        TodoAppUser username = utilService.getUser();
+        Category chosenCategory = getCategoryByCategoryName(username, categoryName);
+        return chosenCategory.getCategoryLists();
     }
 }

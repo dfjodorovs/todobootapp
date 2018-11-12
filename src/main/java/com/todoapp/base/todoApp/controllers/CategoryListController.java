@@ -35,6 +35,6 @@ public class CategoryListController {
             Model model){
 
         listService.saveNewList(categoryName, newList);
-        return "redirect:/lists";
+        return "redirect:/lists/"+categoryName;
     }
 }

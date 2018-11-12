@@ -15,5 +15,17 @@
     <input type="text" th:field="*{text}">
     <input type="submit" value="Create">
 </form>
+
+<div th:if="${not #lists.isEmpty(todoItemDAO.todoItems)}" >
+    <form  th:action="@{'/updateTodoItems/' + ${currentCategory} + '/' + ${listName}}"
+           th:object="${todoItemDAO}" method="POST">
+        <fieldset  th:each =" tItem, stat : ${todoItemDAO.todoItems}">
+            <input  type="checkbox" th:field="${todoItemDAO.todoItems[__${stat.index}__].done}" />
+            <input type="text" th:field="${todoItemDAO.todoItems[__${stat.index}__].text}" />
+        </fieldset>
+        <input  type="submit" value="update">
+    </form>
+</div>
+
 </body>
 </html>

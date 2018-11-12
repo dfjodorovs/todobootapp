@@ -1,6 +1,7 @@
 package com.todoapp.base.todoApp.controllers;
 
 import com.todoapp.base.todoApp.models.TodoItem;
+import com.todoapp.base.todoApp.models.TodoItemDao;
 import com.todoapp.base.todoApp.services.TodoItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,9 @@ public class TodoItemController {
         model.addAttribute("categoryName", categoryName);
         model.addAttribute("listName", listName);
         model.addAttribute("newItem", new TodoItem());
+        model.addAttribute("todoItemDAO", new TodoItemDao(
+                todoItemService.getTodoItems(categoryName,listName)
+        ));
 
         return "todoitem";
     }

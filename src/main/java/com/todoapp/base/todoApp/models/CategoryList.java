@@ -33,11 +33,11 @@ public class CategoryList {
         this.name = name;
     }
 
-    public List<TodoItem> getCategoryLists() {
+    public List<TodoItem> getTodoItems() {
         return todoItems;
     }
 
-    public void setCategoryLists(List<TodoItem> todoItems) {
+    public void setTodoItems(List<TodoItem> todoItems) {
         this.todoItems = todoItems;
     }
 }

@@ -4,6 +4,16 @@
 <head th:replace="fragments/headers :: head(title='Todo')"></head>
 <body>
 <h3 th:text="${categoryName}"></h3>
-<h3 th:text="${listName}"></h3>
+<h4 th:text="${listName}"></h4>
+<form
+        th:action="@{'/createTodoItem/' + ${categoryName} + '/' + ${listName}}"
+        th:object="${newItem}"
+        method="POST">
+    <label>
+        Todo text:
+    </label>
+    <input type="text" th:field="*{text}">
+    <input type="submit" value="Create">
+</form>
 </body>
 </html>

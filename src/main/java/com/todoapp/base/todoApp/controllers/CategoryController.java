@@ -11,6 +11,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
@@ -21,6 +22,23 @@ public class CategoryController {
 
     @Autowired
     private TodoUserRepository todoUserRepository;
+
+    @Autowired
+    private CategoryRepository categoryRepository;
+
+    @GetMapping("/deleteCategory/{categoryId}")
+    public String deleteCategoryId(@PathVariable("categoryId")Long categoryId){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        TodoAppUser username = todoUserRepository.findByUsername(auth.getName());
+        for(Category category : username.getCategories()){
+            if(category.getId() == categoryId){
+                username.getCategories().remove(category);
+                break;
+            }
+        }
+        todoUserRepository.save(username);
+        return "redirect:/category";
+    }
 
     @GetMapping("/category")
     public String getCategory(Model model){

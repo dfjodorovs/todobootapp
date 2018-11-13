@@ -12,10 +12,16 @@
 </form>
 <div th:if="${not #lists.isEmpty(categoryList)}" >
     <div th:each =" category : ${categoryList}">
-        <a href="lists.html"
-           th:href="@{'/lists/' + ${category.name}}"
-           th:text="${category.name}">
-        </a>
+        <div style="border-style: dotted;">
+            <a href="lists.html"
+               th:href="@{'/lists/' + ${category.name}}"
+               th:text="${category.name}">
+            </a>
+            <a href="category.html"
+               th:href="@{'/deleteCategory/' + ${category.id}}"
+               th:text="Delete">
+            </a>
+        </div>
     </div>
 </div>
 </body>

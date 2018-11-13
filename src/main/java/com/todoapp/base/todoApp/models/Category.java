@@ -11,6 +11,7 @@ public class Category {
     @Id
     @GeneratedValue
     private long id;
+
     private String name;
 
     @OneToMany(cascade = CascadeType.ALL)

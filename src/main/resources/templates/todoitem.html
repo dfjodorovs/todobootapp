@@ -3,8 +3,18 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/headers :: head(title='Todo')"></head>
 <body>
-<h3 th:text="${categoryName}"></h3>
-<h4 th:text="${listName}"></h4>
+<h3>
+    <a href="lists.html"
+       th:href="@{/category}"
+       th:text="${categoryName}">
+    </a>
+</h3>
+<h4>
+    <a href="lists.html"
+       th:href="@{'/lists/' + ${categoryName}}"
+       th:text="${listName}">
+    </a>
+</h4>
 <form
         th:action="@{'/createTodoItem/' + ${categoryName} + '/' + ${listName}}"
         th:object="${newItem}"
@@ -17,7 +27,7 @@
 </form>
 
 <div th:if="${not #lists.isEmpty(todoItemDAO.todoItems)}" >
-    <form  th:action="@{'/updateTodoItems/' + ${currentCategory} + '/' + ${listName}}"
+    <form  th:action="@{'/updateTodoItems/' + ${categoryName} + '/' + ${listName}}"
            th:object="${todoItemDAO}" method="POST">
         <fieldset  th:each =" tItem, stat : ${todoItemDAO.todoItems}">
             <input  type="checkbox" th:field="${todoItemDAO.todoItems[__${stat.index}__].done}" />

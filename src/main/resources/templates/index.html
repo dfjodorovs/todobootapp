@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/headers :: head(title='Welcome page')"></head>
+<body>
+    <a href="login.html" th:href="@{/login}">Login</a>
+    <a href="signup.html" th:href="@{/signup}">Register</a>
+</body>
+</html>

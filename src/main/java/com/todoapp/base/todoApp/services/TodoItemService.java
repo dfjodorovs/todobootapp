@@ -28,9 +28,21 @@ public class TodoItemService {
     }
 
     public List<TodoItem> getTodoItems(String categoryName, String listName){
+        CategoryList list = getCategoryList(categoryName, listName);
+        return list.getTodoItems();
+    }
+
+    public void updateItem(List<TodoItem> todoItems, String categoryName, String listName) {
+        TodoAppUser todoAppUse = utilService.getUser();
+        CategoryList list = getCategoryList(categoryName, listName);
+        list.setTodoItems(todoItems);
+        todoUserRepository.save(todoAppUse);
+    }
+
+    public CategoryList getCategoryList(String categoryName, String listName){
         TodoAppUser todoAppUse = utilService.getUser();
         Category category = utilService.getCategoryByCategoryName(todoAppUse, categoryName);
         CategoryList list = utilService.getListByListName(category, listName);
-        return list.getTodoItems();
+        return list;
     }
 }

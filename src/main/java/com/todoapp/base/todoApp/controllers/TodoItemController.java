@@ -42,5 +42,15 @@ public class TodoItemController {
                 return "redirect:/singleList/"+categoryName+"/"+listName+"";
     }
 
+    @PostMapping("/updateTodoItems/{categoryName}/{listName}")
+    public String updateTodoItem(
+            TodoItemDao todoItemDao,
+            @PathVariable("categoryName") String categoryName,
+            @PathVariable("listName") String listName
+    ){
+        todoItemService.updateItem(todoItemDao.getTodoItems(), categoryName, listName);
+        return "redirect:/singleList/"+categoryName+"/"+listName+"";
+    }
+
 
 }

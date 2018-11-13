@@ -24,47 +24,27 @@ public class UserController {
     private TodoUserRepository todoUserRepository;
 
     @GetMapping("/")
+    private String getWelcomePage(){
+        return "index";
+    }
+
+    @GetMapping("/login")
+    private String getLoginPage(){
+        return "login";
+    }
+
+    @GetMapping("/signup")
     private String getNewUserPage(Model model){
         model.addAttribute("newUser",new TodoAppUser());
         return "signup";
     }
 
-    @PostMapping("/")
+    @PostMapping("/signup")
     private String createNewUser(TodoAppUser user, Model model){
         todoUserRepository.save(user);
         model.addAttribute("saveOk","Saved!");
         model.addAttribute("newUser",new TodoAppUser());
         return "signup";
     }
-
-//    @GetMapping("/test")
-//    private TodoAppUser testMethod(){
-//        TodoAppUser todoAppUser = new TodoAppUser();
-//        todoAppUser.setEmail("some@email.com");
-//        todoAppUser.setPassword("pass");
-//        todoAppUser.setUsername("username");
-//
-//        List<Category> categories = new ArrayList<>();
-//
-//        Category category = new Category();
-//        category.setName("Home");
-//        categories.add(category);
-//
-//        List<CategoryList> categoryLists = new ArrayList<>();
-//
-//        CategoryList categoryList = new CategoryList();
-//        categoryList.setName("Chores");
-//        categoryLists.add(categoryList);
-//
-//        List<TodoItem> todoItems = new ArrayList<>();
-//        TodoItem todoItem = new TodoItem();
-//        todoItems.add(todoItem);
-//
-//        categoryList.setCategoryLists(todoItems);
-//        category.setCategoryLists(categoryLists);
-//        todoAppUser.setCategories(categories);
-//
-//        return todoUserRepository.save(todoAppUser);
-//    }
 
 }

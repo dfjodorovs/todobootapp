@@ -3,7 +3,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/headers :: head(title='Lists')"></head>
 <body>
-<h3 th:text="${categoryName}"></h3>
+<h3>
+    <a href="lists.html"
+       th:href="@{/category}"
+       th:text="${categoryName}">
+    </a>
+</h3>
 <form th:action="@{'/createNewList/' + ${categoryName}}" th:object="${newList}" method="POST">
     <label>
         List name:
